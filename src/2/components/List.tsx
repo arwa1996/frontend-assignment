@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 
 // Components
 import Item from "./Item";
+import { IProduct } from "../utils/interfaces";
 
 /*
  * The ListProps interface defines the types for the components props.
@@ -13,10 +14,18 @@ import Item from "./Item";
  * and remove the ListProps interface
  */
 
-interface ListProps {}
+interface ListProps {
+  data: Array<IProduct>
+}
 
 const List: FunctionComponent<ListProps> = (props) => {
-  return <div>#List goes here#</div>;
+  const { data } = props;
+
+  return <div>
+    <h2>Our List</h2>
+    {data.length > 0 && data.map((itemData: IProduct) => <Item key={itemData.id} itemData={itemData} />)}
+    {data.length === 0 && <h4>No Data Found...</h4>}
+  </div>;
 };
 
 export default List;

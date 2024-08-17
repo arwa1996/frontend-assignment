@@ -1,0 +1,22 @@
+
+// Color Variables
+$primary-color: greenyellow;
+$info-color: rgb(71, 71, 240);
+
+// Components
+@import './components/shared/shared';
+@import './components/todoForm';
+@import './components/todoList';
+@import './components/todo-item';
+
+
+/* DO NOT CHANGE THIS ROOT CLASS NAME*/
+
+#task-3 {
+  /* Styles goes here */
+  .todo-container {
+    background-color: #eee;
+    padding: 1rem .75rem;
+    border-radius: 14px;
+  }
+}

@@ -1,0 +1,73 @@
+.main-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    min-height: 50px;
+    min-width: 100px;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    z-index: 8;
+    font-weight: 600;
+    @include ease;
+    cursor: pointer;
+    border-radius: 8px;
+    line-height: 14px;
+    border: 1px solid $primary-color;
+    text-transform: capitalize;
+
+    &[disabled] {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        width: 52%;
+        height: 100%;
+        background-color: $primary-color;
+        z-index: -1;
+        @include ease;
+    }
+    &::after {
+        inset: 0 0 0 auto;
+    }
+    &::before {
+        inset: 0 auto 0 0;
+    }
+
+    &:hover {
+        border: 1px solid $text-color;
+    }
+    &.primary-btn {
+        color: #fff;
+        border-color: $primary-color;
+
+        &:hover {
+            color: $primary-color;
+            border-color: $primary-color;
+            &:after,
+            &::before {
+                background-color: $primary-color;
+            }
+            &:after {
+                transform: translateX(150%) translateY(7px) rotate(45deg);
+                transform-origin: left;
+            }
+            &::before {
+                transform: translateX(-150%) translateY(-7px) rotate(45deg);
+                transform-origin: right;
+            }
+        }
+    }
+
+
+    @include responsive(tab-port) {
+        min-height: 42px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+}

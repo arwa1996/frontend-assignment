@@ -1,0 +1,33 @@
+.todo-list_container {
+    padding: 2rem 1.5rem;
+    ul {
+        padding: 0;
+    }
+    .title {
+        border-bottom: 2px solid;
+        width: fit-content;
+        margin: 0.75rem auto;
+    }
+    .info {
+        color: $info-color;
+        text-align: center;
+    }
+
+    // pending-tasks
+    .pending-tasks {
+        .title,
+        li {
+            color: #6bc9b8;
+        }
+    }
+
+    // done-tasks
+    .done-tasks {
+        .title {
+            color: darken($primary-color, 15);
+        }
+        li {
+            color: darken($primary-color, 20);
+        }
+    }
+}

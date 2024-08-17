@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { IProduct } from "../utils/interfaces";
 
 /*
  * The ItemProps interface defines the types for the components props.
@@ -10,10 +11,17 @@ import { FunctionComponent } from "react";
  * and remove the ItemProps interface
  */
 
-interface ItemProps {}
+interface ItemProps {
+  itemData: IProduct
+}
 
 const Item: FunctionComponent<ItemProps> = (props) => {
-  return <li>#Item goes here#</li>;
+  const { itemData } = props;
+  return <li>
+    {itemData?.title} - <span style={{ color: '#666666', fontSize: '.75rem' }}>{itemData?.description}</span>
+    <br />
+    {/* <img src={itemData.thumbnail} width={100} height={100} alt={itemData?.title} style={{display:'flex',margin:'auto'}} /> */}
+  </li>;
 };
 
 export default Item;

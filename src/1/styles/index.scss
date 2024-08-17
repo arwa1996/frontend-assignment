@@ -1,0 +1,80 @@
+// Mixins
+@import "./mixins";
+
+// Colors
+@import "./colors";
+
+// Shared Components
+@import "./components/shared/button";
+
+/* DO NOT CHANGE THIS ROOT CLASS NAME*/
+#task-1 {
+  /* Styles goes here */
+  form {
+    max-width: 85%;
+    margin: auto;
+  }
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    label {
+      font-size: 0.75em;
+      font-weight: bold;
+      color: $text-color;
+      margin-bottom: 0.25rem;
+    }
+    input {
+      height: 44px;
+      border-radius: 8px;
+      padding: 0 0.75rem;
+      border: 1px solid #8d8a8a;
+      &:invalid{
+        border-color: red !important
+      }
+      @include ease;
+      &::placeholder {
+        opacity: 0.5;
+        @include ease;
+      }
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        &::placeholder {
+          transform: translateY(40px);
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  // Style Submit Button
+  button {
+    margin: auto;
+    min-width: 150px;
+  }
+
+  // For Mobile
+  @include responsive(phone) {
+    .input-container {
+      font-size: 18px;
+      input {
+        height: 40px;
+        border-radius: 6px;
+        padding: 0 0.5rem;
+      }
+    }
+
+    button {
+      min-width: 100px;
+    }
+  }
+
+  // For Desktop Only
+  @include responsive(big-desktop) {
+    form {
+      width: 65%;
+    }
+  }
+}

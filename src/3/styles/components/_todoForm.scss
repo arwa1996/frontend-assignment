@@ -1,0 +1,39 @@
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    .search-input {
+        border: none;
+        max-height: 40px;
+        border-radius: 8px;
+        padding: 0 0.5rem;
+    }
+}
+.todo-form {
+    flex: 0.75;
+    display: flex;
+    border: 1px solid #eee;
+    height: 44px;
+    border-radius: 8px;
+    overflow: hidden;
+    input,
+    .todo-btn {
+        border: 0;
+    }
+    input {
+        flex: 1;
+        height: 100%;
+        padding: 0 0.75rem;
+    }
+    .todo-btn {
+        background-color: $primary-color;
+        padding: 0.5rem 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+            background-color: darken($primary-color, 10);
+        }
+        &:disabled {
+            pointer-events: none;
+        }
+    }
+}

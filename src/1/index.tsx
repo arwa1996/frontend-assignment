@@ -1,12 +1,21 @@
 // Style
-import { FunctionComponent, useState } from "react";
-import "./index.scss";
+import { FormEvent, FunctionComponent, useState } from "react";
+import "./styles/index.scss";
 
 const Task1: FunctionComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onSubmit = () => {
+  // Basic Form Validation
+  function isFormValid(){
+    if(!email || !password) {
+      return false
+    }
+    return true
+  }
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     // If you want to do something with form submit
 
     alert(`Email: ${email} \nPassword: ${password}`);
@@ -15,19 +24,30 @@ const Task1: FunctionComponent = () => {
   return (
     <div id="task-1">
       <form onSubmit={onSubmit}>
-        <label>Email</label>
-        <input
-          name="email"
-          onChange={(event) => setEmail(event.currentTarget.value)}
-          value={email}
-        />
-        <label>Password</label>
-        <input
-          name="password"
-          onChange={(event) => setPassword(event.currentTarget.value)}
-          value={password}
-        />
-        <button>Login</button>
+        <div className="input-container">
+          <label>Email</label>
+          <input
+            name="email"
+            type="email"
+            required
+            onChange={(event) => setEmail(event.currentTarget.value)}
+            value={email}
+            placeholder="Write your email here..."
+          />
+        </div>
+
+        <div className="input-container">
+          <label>Password</label>
+          <input
+            name="password"
+            minLength={6}
+            onChange={(event) => setPassword(event.currentTarget.value)}
+            value={password}
+            placeholder="Write your password here..."
+          />
+        </div>
+
+        <button className="main-btn primary-btn" disabled={!isFormValid()}>Login</button>
       </form>
     </div>
   );
